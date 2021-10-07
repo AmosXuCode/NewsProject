@@ -14,5 +14,12 @@ export default {
   components: {
     HelloWorld,
   },
+  created() {
+    console.log(process.env.VUE_APP_NEWS_API_KEY);
+    // this.$store.dispatch('getAllNewsData', null);
+  },
+  mounted() {
+    console.log(process.env.VUE_APP_NEWS_API_PATH);
+  },
 };
 </script>
