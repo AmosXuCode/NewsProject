@@ -35,30 +35,30 @@
 export default {
   data() {
     return {
-      pageNum: this.page,
+      pageNum: Number(this.page),
     };
   },
   props: {
     page: {
-      type: Number,
+      type: [Number, String],
       requrie: true,
       default: 0,
     },
     size: {
-      type: Number,
+      type: [Number, String],
       requrie: true,
       default: 0,
     },
     total: {
-      type: Number,
+      type: [Number, String],
       requrie: true,
       default: 0,
     },
   },
   computed: {
     pagination() {
-      const ptotal = this.total;
-      const perPage = this.size;
+      const ptotal = Number(this.total);
+      const perPage = Number(this.size);
       // page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
       // 這邊要注意，因為有可能會出現餘數，所以要無條件進位。
       const pageTotal = Math.ceil(ptotal / perPage);
@@ -87,15 +87,15 @@ export default {
         }
         return arr;
       }
-      const arr = pag(this.page, pageTotal, 2);
+      const arr = pag(Number(this.page), pageTotal, 2);
       return arr;
     },
     pageTotal() {
       // const { total } = this;
-      const perPage = this.size;
+      const perPage = Number(this.size);
       // page 按鈕總數量公式 總資料數量 / 每一頁要顯示的資料
       // 這邊要注意，因為有可能會出現餘數，所以要無條件進位。
-      const pageTotal = Math.ceil(this.total / perPage);
+      const pageTotal = Math.ceil(Number(this.total) / perPage);
       return pageTotal;
     },
   },
@@ -103,7 +103,7 @@ export default {
     // 分頁操控的function
     pageHandler(pageNum, type = '') {
       if (pageNum === '...') return;
-      const currentPage = this.page;
+      const currentPage = Number(this.page);
       if (!type && pageNum) {
         this.$emit('goPageTo', pageNum);
       } else if (type === 'prev') {
@@ -123,7 +123,7 @@ export default {
   },
   watch: {
     page(newVal) {
-      this.pageNum = newVal;
+      this.pageNum = Number(newVal);
     },
   },
 };
@@ -151,7 +151,7 @@ export default {
     }
 
     &.active{
-      background: #FB9C44;
+      background: #1E4CC4;
       color: #fff;
     }
 
