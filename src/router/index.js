@@ -18,6 +18,10 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/NewsDetail.vue'),
   },
+  {
+    path: '*',
+    redirect: { name: 'NewsList' },
+  },
 ];
 
 const router = new VueRouter({
