@@ -46,7 +46,7 @@ export default {
   visibility: hidden;
   img {
     width: 100%;
-    max-width: 200px;
+    max-width: 100px;
   }
 
   &.active{

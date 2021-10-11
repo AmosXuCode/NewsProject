@@ -290,6 +290,19 @@ const News = {
         dispatch('loading/setLoadingStatus', false, { root: true });
         const { data } = response;
         commit('setNewsData', data);
+        if (!data.articles.length) {
+          dispatch('notification/spawnNotification', {
+            status: 'active',
+            type: 'error',
+            text: '此次搜尋並無查到任何結果，請再搜一次',
+            cancelText: '',
+            confirmText: '確認',
+            cancelCallback: '',
+            confirmCallback: () => {
+              dispatch('notification/closeNotification', null, { root: true });
+            },
+          }, { root: true });
+        }
       } catch (error) {
         dispatch('loading/setLoadingStatus', false, { root: true });
         dispatch('notification/spawnNotification', {
