@@ -45,7 +45,7 @@ export default {
   },
   created() {
     const { order } = this.$route.query;
-    if (order) {
+    if (order || order === 0) {
       this.order = order;
     }
     if (!this.getNewsData.articles.length) {

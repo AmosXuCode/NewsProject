@@ -95,7 +95,4 @@ input {
 div.flex.col-xs-12{
   margin-bottom: 5px
 }
-button {
-
-}
 </style>
